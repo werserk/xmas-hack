@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/workspace.iml" filepath="$PROJECT_DIR$/.idea/workspace.iml" />
-      <module fileurl="file://$USER_HOME$/PycharmProjects/xmas-hack/.idea/xmas-hack.iml" filepath="$USER_HOME$/PycharmProjects/xmas-hack/.idea/xmas-hack.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/xmas-hack.iml" filepath="$PROJECT_DIR$/.idea/xmas-hack.iml" />
     </modules>
   </component>
 </project>

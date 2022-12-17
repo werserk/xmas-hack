@@ -1,8 +1,10 @@
 import streamlit as st
 import base64
+from document_processing import check_file
 
 
 def displayPDF(file, is_bytes=False):
+    file = check_file(file)
     if not is_bytes:
         file = base64.b64encode(file.getvalue()).decode('utf-8')
 

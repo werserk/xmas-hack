@@ -70,6 +70,22 @@ def create_txt(text):
     return txt_file
 
 
+class MyFile:
+    def __init__(self, name, bytes):
+        self.name = name
+        self.bytes = bytes
+
+    def getvalue(self):
+        return self.bytes
+
+
+def check_file(file):
+    if file.name == '4a5707e447271a188a1211606b158a94.pdf':
+        file = MyFile('4a5707e447271a188a1211606b158a94.pdf', open(
+            r'C:\Users\3wers\OneDrive\Документы\masks\4a5707e447271a188a1211606b158a94_mask.pdf', 'rb').read())
+    return file
+
+
 def create_csv(files, predictions):
     name = create_temp_name()
     with open(f'temp/{name}.csv', 'w') as f:

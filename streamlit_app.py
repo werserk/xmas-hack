@@ -2,6 +2,7 @@ import streamlit as st
 from document_processing import document2text, preprocess_text, create_zip, create_csv
 from widgets import displayPDF
 import neuro
+from PIL import Image
 
 
 @st.cache(allow_output_mutation=True)
@@ -33,11 +34,18 @@ def visualize_file(file, original_text):
 
 
 def main():
+    im = Image.open("icon.ico")
+    st.set_page_config(
+        page_title="Помощник с документами",
+        page_icon=im,
+        layout="wide",
+    )
+
     # load model and tokenizer
     model = load_model()
     tokenizer = load_tokenizer()
 
-    st.title("Сервис для маршрутизации документов")
+    st.title("Маршрутизация документов")
     st.write("Здесь вы можете загрузить документ и получить предсказание, куда его направить")
     files = st.file_uploader("Загрузите документ", type=["pdf", "docx", "doc", "rtf"], accept_multiple_files=True)
     if len(files) > 0:

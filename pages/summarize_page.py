@@ -1,11 +1,10 @@
 import streamlit as st
-from document_processing import document2text, preprocess_text, create_txt
-from widgets import displayPDF
+from document_processing import create_txt
 import neuro
 
 
 def main():
-    st.title("Сервис для маршрутизации документов")
+    st.title("Резюмирование текста")
     st.write("Здесь вы можете загрузить документ и получить сокращённый текст")
     file = st.file_uploader("Загрузите документ", type=["pdf", "docx", "doc", "rtf"], accept_multiple_files=False)
     if file is not None:

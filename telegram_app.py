@@ -22,12 +22,30 @@ def addfile(message):
     with open(src, 'wb') as new_file:
         new_file.write(downloaded_file)
 
-    # make prediction
-    original_text = document2text(src)
-    text = preprocess_text(original_text)
-    prediction = neuro.predict(model, tokenizer, text)
-    bot.send_message(message.chat.id, f'{prediction}'
-                                      f'Я считаю, что документ "{file_name}" - {prediction}')
+    # create buttons
+    keyboard = telebot.types.InlineKeyboardMarkup()
+    key_prediction = telebot.types.InlineKeyboardButton(text='Маршрутизация', callback_data='Маршрутизация')
+    keyboard.add(key_prediction)
+    key_summary = telebot.types.InlineKeyboardButton(text='Резюмирование', callback_data='Резюмирование')
+    keyboard.add(key_summary)
+    question = 'Выберите тип операции над документом:'
+    bot.send_message(message.chat.id, text=question, reply_markup=keyboard)
+
+    # get user's answer
+    @bot.callback_query_handler(func=lambda call: True)
+    def callback_inline(call):
+        if call.message:
+            if call.data == 'Маршрутизация':
+                # make prediction
+                original_text = document2text(src)
+                text = preprocess_text(original_text)
+                prediction = neuro.predict(model, tokenizer, text)
+                bot.send_message(message.chat.id, "// Маршрутизация\n"
+                                                  "{}".format(prediction))
+            elif call.data == 'Резюмирование':
+                text = neuro.summarize_file(src, sentence_number=3)
+                bot.send_message(message.chat.id, "// Резюмирование\n"
+                                                  "{}".format(text))
 
 
 # Команда start

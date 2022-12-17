@@ -2,15 +2,19 @@ import telebot
 from document_processing import create_temp_name, document2text, preprocess_text
 import os
 import neuro
+import shutil
 
 bot = telebot.TeleBot('5860937749:AAH0y9PTyWWvEvSWNuy8fsTWUH8sNrO7o6g')
 model = neuro.init_model()
 tokenizer = neuro.init_tokenizer()
 print('[#] Бот активен')
+msg, file_path, file_name = None, None, None
 
 
 @bot.message_handler(content_types=['document'])  # list relevant content types
 def addfile(message):
+    global msg, file_path, file_name
+    msg = message
     # ask person and give 2 buttons
     file_name = message.document.file_name
     file_info = bot.get_file(message.document.file_id)
@@ -18,8 +22,8 @@ def addfile(message):
     name = create_temp_name()
     folder_path = os.path.join("temp", name)
     os.mkdir(folder_path)
-    src = os.path.join(folder_path, file_name)
-    with open(src, 'wb') as new_file:
+    file_path = os.path.join(folder_path, file_name)
+    with open(file_path, 'wb') as new_file:
         new_file.write(downloaded_file)
 
     # create buttons
@@ -31,21 +35,24 @@ def addfile(message):
     question = 'Выберите тип операции над документом:'
     bot.send_message(message.chat.id, text=question, reply_markup=keyboard)
 
-    # get user's answer
-    @bot.callback_query_handler(func=lambda call: True)
-    def callback_inline(call):
-        if call.message:
-            if call.data == 'Маршрутизация':
-                # make prediction
-                original_text = document2text(src)
-                text = preprocess_text(original_text)
-                prediction = neuro.predict(model, tokenizer, text)
-                bot.send_message(message.chat.id, "// Маршрутизация\n"
-                                                  "{}".format(prediction))
-            elif call.data == 'Резюмирование':
-                text = neuro.summarize_file(src, sentence_number=1)
-                bot.send_message(message.chat.id, "// Резюмирование\n"
-                                                  "{}".format(text))
+
+# get user's answer
+@bot.callback_query_handler(func=lambda call: True)
+def callback_inline(call):
+    if call.message:
+        if call.data == 'Маршрутизация':
+            # make prediction
+            original_text = document2text(file_path)
+            text = preprocess_text(original_text)
+            prediction = neuro.predict(model, tokenizer, text)
+            bot.send_message(msg.chat.id, "// Маршрутизация\n"
+                                          "Имя файла: {}\n"
+                                          "Результат обработки: {}".format(file_name, prediction))
+        elif call.data == 'Резюмирование':
+            text = neuro.summarize_file(file_path, sentence_number=1)
+            bot.send_message(msg.chat.id, "// Резюмирование\n"
+                                          "Имя файла: {}\n"
+                                          "{}".format(file_name, text))
 
 
 # Команда start

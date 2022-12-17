@@ -4,19 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b699c660-03e3-476b-851d-e948805daceb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/xmas-hack.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/xmas-hack.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/document_processing.py" beforeDir="false" afterPath="$PROJECT_DIR$/document_processing.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notebooks/Analysis.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/Analysis.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/summarize_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/summarize_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/streamlit_app.py" beforeDir="false" afterPath="$PROJECT_DIR$/streamlit_app.py" afterDir="false" />
+    <list default="true" id="b699c660-03e3-476b-851d-e948805daceb" name="Changes" comment="icon">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/telegram_app.py" beforeDir="false" afterPath="$PROJECT_DIR$/telegram_app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/widgets.py" beforeDir="false" afterPath="$PROJECT_DIR$/widgets.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,14 +85,34 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1671263517125</updated>
-      <workItem from="1671263519431" duration="3568000" />
+      <workItem from="1671263519431" duration="4400000" />
     </task>
+    <task id="LOCAL-00001" summary="labelling">
+      <created>1671267339138</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1671267339138</updated>
+    </task>
+    <task id="LOCAL-00002" summary="icon">
+      <created>1671267352872</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1671267352872</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="labelling" />
+    <MESSAGE value="icon" />
+    <option name="LAST_COMMIT_MESSAGE" value="icon" />
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/xmas_hack$telegram_app.coverage" NAME="telegram_app Coverage Results" MODIFIED="1671265891310" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/xmas_hack$telegram_app.coverage" NAME="telegram_app Coverage Results" MODIFIED="1671267914557" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

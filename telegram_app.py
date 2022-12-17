@@ -6,7 +6,7 @@ import neuro
 bot = telebot.TeleBot('5860937749:AAH0y9PTyWWvEvSWNuy8fsTWUH8sNrO7o6g')
 model = neuro.init_model()
 tokenizer = neuro.init_tokenizer()
-print('Bot started')
+print('[#] Бот активен')
 
 
 @bot.message_handler(content_types=['document'])  # list relevant content types
@@ -43,7 +43,7 @@ def addfile(message):
                 bot.send_message(message.chat.id, "// Маршрутизация\n"
                                                   "{}".format(prediction))
             elif call.data == 'Резюмирование':
-                text = neuro.summarize_file(src, sentence_number=3)
+                text = neuro.summarize_file(src, sentence_number=1)
                 bot.send_message(message.chat.id, "// Резюмирование\n"
                                                   "{}".format(text))
 
@@ -51,9 +51,8 @@ def addfile(message):
 # Команда start
 @bot.message_handler(commands=["start"])
 def start(m, res=False):
-    bot.send_message(m.chat.id, "Привет, я бот, который поможет тебе разобраться с документами. "
-                                "Просто отправь мне документ, и я скажу, что это за документ"
-                                "Если хочешь узнать больше, напиши /help")
+    bot.send_message(m.chat.id, "Привет, я бот, который поможет тебе разобраться с документами.\n"
+                                "Просто отправь мне документ, и мы начнём работу!")
 
 
 # Запускаем бота

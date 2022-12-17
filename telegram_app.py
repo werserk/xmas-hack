@@ -2,7 +2,6 @@ import telebot
 from document_processing import create_temp_name, document2text, preprocess_text
 import os
 import neuro
-import shutil
 
 bot = telebot.TeleBot('5860937749:AAH0y9PTyWWvEvSWNuy8fsTWUH8sNrO7o6g')
 model = neuro.init_model()

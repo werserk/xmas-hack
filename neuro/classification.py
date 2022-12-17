@@ -1,13 +1,8 @@
-from config import MODEL_PATH
+from config import MODEL_PATH, CLASSES
 from transformers import BertTokenizer, BertForSequenceClassification
 import torch
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-classes = ['Договоры аренды',
-           'Договоры купли-продажи',
-           'Договоры оказания услуг',
-           'Договоры подряда',
-           'Договоры поставки']
 
 
 def init_model():
@@ -37,7 +32,7 @@ def predict(model, tokenizer, text):
 
     score = model(input_ids)[0]
     label = torch.argmax(score[0]).cpu().detach().numpy()
-    label = classes[int(label)]
+    label = CLASSES[int(label)]
     return label
 
 

@@ -1,7 +1,7 @@
 import streamlit as st
-import neuro
 from document_processing import document2text, preprocess_text, create_zip, create_csv
 from widgets import displayPDF
+import neuro
 
 
 @st.cache(allow_output_mutation=True)
@@ -28,7 +28,8 @@ def visualize_file(file, original_text):
     if file.name.endswith(".pdf"):
         displayPDF(file)
     else:
-        st.text_area("", original_text, disabled=True, height=1000)
+        # original text to unicode
+        st.write("", original_text, disabled=True, height=1000)
 
 
 def main():

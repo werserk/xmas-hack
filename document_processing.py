@@ -3,6 +3,7 @@ import re
 import os
 import random
 import shutil
+import pprint
 
 
 def document2text(doc_path):
@@ -12,6 +13,7 @@ def document2text(doc_path):
 
 
 def clear_text(text):
+    text = text.replace('HYPERLINK', '')
     text = re.sub("'", "", text)
     text = re.sub("(\\W)+", " ", text)
     text = text.replace("_", "")
@@ -26,7 +28,11 @@ def preprocess_text(text):
 
 
 def create_temp_name():
-    return str(random.randint(0, 100000000)).ljust(9, "0")
+    # generate random name from alphabet
+    name = ""
+    for i in range(20):
+        name += random.choice("abcdefghijklmnopqrstuvwxyz")
+    return name
 
 
 def create_temp_folder(name):
@@ -53,6 +59,15 @@ def create_zip(files, predictions):
             f.write(file.getvalue())
     shutil.make_archive(zip_file[:-4], "zip", new_folder)
     return zip_file
+
+
+def create_txt(text):
+    name = create_temp_name()
+    with open(f'temp/{name}.txt', 'w') as f:
+        f.write(text)
+    with open(f'temp/{name}.txt', 'rb') as f:
+        txt_file = f.read()
+    return txt_file
 
 
 def create_csv(files, predictions):

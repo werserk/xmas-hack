@@ -1,4 +1,4 @@
-from config import MODEL_PATH, CLASSES
+from src.config import MODEL_PATH, CLASSES
 from transformers import BertTokenizer, BertForSequenceClassification
 import torch
 

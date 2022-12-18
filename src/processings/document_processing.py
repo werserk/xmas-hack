@@ -3,7 +3,6 @@ import re
 import os
 import random
 import shutil
-import pprint
 
 
 def document2text(doc_path):
@@ -36,10 +35,10 @@ def create_temp_name():
 
 
 def create_temp_folder(name):
-    if not os.path.exists("temp"):
-        os.mkdir("temp")
+    if not os.path.exists("../../temp"):
+        os.mkdir("../../temp")
     # generate random folder name)
-    folder_path = os.path.join("temp", name)
+    folder_path = os.path.join("../../temp", name)
     os.mkdir(folder_path)
     return folder_path
 
@@ -47,7 +46,7 @@ def create_temp_folder(name):
 def create_zip(files, predictions):
     name = create_temp_name()
     new_folder = create_temp_folder(name)
-    zip_file = os.path.join("temp", name + ".zip")
+    zip_file = os.path.join("../../temp", name + ".zip")
     for file in files:
         # create folder for each class
         class_name = predictions[files.index(file)][2]
@@ -77,13 +76,6 @@ class MyFile:
 
     def getvalue(self):
         return self.bytes
-
-
-def check_file(file):
-    if file.name == '4a5707e447271a188a1211606b158a94.pdf':
-        file = MyFile('4a5707e447271a188a1211606b158a94.pdf', open(
-            r'C:\Users\3wers\OneDrive\Документы\masks\4a5707e447271a188a1211606b158a94_mask.pdf', 'rb').read())
-    return file
 
 
 def create_csv(files, predictions):

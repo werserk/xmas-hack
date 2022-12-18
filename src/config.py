@@ -1,4 +1,4 @@
-MODEL_PATH = 'test_model/'
+MODEL_PATH = '../data/model_weights/'
 CLASSES = ['Договоры аренды',
            'Договоры купли-продажи',
            'Договоры оказания услуг',

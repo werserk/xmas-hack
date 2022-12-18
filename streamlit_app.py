@@ -1,8 +1,20 @@
 import streamlit as st
-from document_processing import document2text, preprocess_text, create_zip, create_csv
-from widgets import displayPDF
-import neuro
 from PIL import Image
+import base64
+
+from src.processings import preprocess_text, document2text
+from src import neuro
+
+
+def displayPDF(file, is_bytes=False):
+    if not is_bytes:
+        file = base64.b64encode(file.getvalue()).decode('utf-8')
+
+    # Embedding PDF in HTML
+    pdf_display = F'<iframe src="data:application/pdf;base64,{file}" width="700" height="1000" type="application/pdf"></iframe>'
+
+    # Displaying File
+    st.markdown(pdf_display, unsafe_allow_html=True)
 
 
 @st.cache(allow_output_mutation=True)
@@ -33,8 +45,8 @@ def visualize_file(file, original_text):
         st.write("", original_text, disabled=True, height=1000)
 
 
-def main():
-    im = Image.open("icon.ico")
+def activate():
+    im = Image.open("data/icon.ico")
     st.set_page_config(
         page_title="Помощник с документами",
         page_icon=im,
@@ -84,4 +96,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    activate()

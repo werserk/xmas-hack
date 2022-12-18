@@ -2,7 +2,7 @@ import spacy
 from spacy.lang.ru.stop_words import STOP_WORDS
 from string import punctuation
 from heapq import nlargest
-from document_processing import document2text
+from src.processings.document_processing import document2text
 
 
 def summarize(text, sentence_number=5):

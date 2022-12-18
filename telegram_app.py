@@ -1,9 +1,13 @@
+from dotenv import load_dotenv
 import telebot
-from document_processing import create_temp_name, document2text, preprocess_text
 import os
-import neuro
 
-bot = telebot.TeleBot('5860937749:AAH0y9PTyWWvEvSWNuy8fsTWUH8sNrO7o6g')
+from src.processings.document_processing import create_temp_name, document2text, preprocess_text
+from src import neuro
+
+load_dotenv()
+
+bot = telebot.TeleBot(os.getenv("API_KEY"))
 model = neuro.init_model()
 tokenizer = neuro.init_tokenizer()
 print('[#] Бот активен')
@@ -50,7 +54,7 @@ def callback_inline(call):
         elif call.data == 'Резюмирование':
             text = neuro.summarize_file(file_path, sentence_number=1)
             bot.send_message(msg.chat.id, "// Резюмирование\n"
-                                          "Имя файла: {}\n"
+                                          "Имя файла: {}\n\n"
                                           "{}".format(file_name, text))
 
 
@@ -61,5 +65,10 @@ def start(m, res=False):
                                 "Просто отправь мне документ, и мы начнём работу!")
 
 
-# Запускаем бота
-bot.polling(none_stop=True, interval=0)
+def activate():
+    # Запускаем бота
+    bot.polling(none_stop=True, interval=0)
+
+
+if __name__ == '__main__':
+    activate()

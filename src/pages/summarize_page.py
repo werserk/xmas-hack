@@ -1,6 +1,6 @@
 import streamlit as st
-from document_processing import create_txt
-import neuro
+from src.processings.document_processing import create_txt
+from src import neuro
 
 
 def main():

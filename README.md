@@ -21,12 +21,13 @@ You could find unrealized methods in some notebooks in the `notebooks` folder.
 
 ### Web-service
 
-<img src=".images/routing.png" width="45%" />
-<img src=".images/summarization.png" width="45%" />
+| Routing | Summarization |
+| :-----: | :-----------: |
+|![](.images/routing.png)|![](.images/summarization.png)|
 
 ### Telegram bot
 
-<img src=".images/telegram-bot.png" width="20%">
+<img src=".images/telegram-bot.png" width="25%">
 
 ## Run code
 

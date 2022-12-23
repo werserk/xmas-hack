@@ -42,7 +42,7 @@ pip install -r requirements.txt
 You should create .env in root folder and add your bot token to it.
 
 ```.env
-API_TOKEN=<YOUR_TOKEN>
+API_KEY=<YOUR_TELEGRAM_BOT_TOKEN>
 ```
 
 and then run

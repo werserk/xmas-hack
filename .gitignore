@@ -3,3 +3,4 @@ venv/
 temp/
 data/model_weights/
 data/
+.env
